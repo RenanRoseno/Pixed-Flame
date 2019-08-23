@@ -5,6 +5,7 @@ Fire {
 table{
     border-collapse: collapse;
     border: 1px solid rgba(0,0,0,0.5);
+    /*color: #FFF; */
 }
 
 td{
@@ -15,8 +16,19 @@ td{
     vertical-align: center;
     font-family: monospace;
     font-size: 18px;
+    position: relative;
 }
 
-tr{
-
+.pixel-index{
+    font-size: 10px;
+    display: inline-block;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    color: rgba(100,100,100,0.9)
 }
+/*
+body{
+    background: #000;
+}
+*/
