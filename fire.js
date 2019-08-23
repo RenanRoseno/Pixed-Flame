@@ -1,17 +1,21 @@
 const flamePixed = []
-const flameWidth = 20
+const flameWidth = 30
 const flameHeight = 11      
 
 
 
 function start(){
     createStructure()
-    console.log(flamePixed)
+    createFlameSource()
     renderFlame()
 }
 
 function calculateFlamePropagation(){
-    
+    for(let column = 0; column < flameWidth; column++){
+        for(let row = 0; row < flameWidth; row++){
+            
+        }
+    }
 }
 
 function createStructure(){
@@ -45,5 +49,13 @@ function renderFlame(){
     document.querySelector('#Flame').innerHTML = html
 }
 
+function createFlameSource(){
+    for(let column = 0; column <= flameWidth; column++){
+        const overFlowPixelIndex = flameWidth * flameHeight
+        const pixelIndex = (overFlowPixelIndex - flameWidth) + column
+        flamePixed[pixelIndex] = 36
+    }
+
+}
 
 start()
