@@ -1,6 +1,6 @@
 const flamePixed = []
-const flameWidth = 30
-const flameHeight = 11      
+const flameWidth = 10 
+const flameHeight = 10      
 
 
 
@@ -8,14 +8,19 @@ function start(){
     createStructure()
     createFlameSource()
     renderFlame()
+
+    setInterval(calculateFlamePropagation, 1000)
 }
 
 function calculateFlamePropagation(){
     for(let column = 0; column < flameWidth; column++){
-        for(let row = 0; row < flameWidth; row++){
-            
+        for(let row = 0; row < flameHeight; row++){
+            const pixelIndex = column + ( flameWidth * row)
+            console.log(pixelIndex)
+            updateFlameIntensityPerPixels(pixelIndex)
         }
     }
+    renderFlame()
 }
 
 function createStructure(){
@@ -55,7 +60,20 @@ function createFlameSource(){
         const pixelIndex = (overFlowPixelIndex - flameWidth) + column
         flamePixed[pixelIndex] = 36
     }
-
 }
+
+function updateFlameIntensityPerPixels(currentPixelIndex){
+    const belowPixelIndex = currentPixelIndex + flameWidth
+    
+    if(belowPixelIndex >= flameWidth * flameHeight){
+        return
+    }
+
+    const decay = 1
+    const belowPixelFireIntensity = flamePixed[belowPixelIndex]
+    const newIntensity = belowPixelFireIntensity - decay >= 0 ? belowPixelFireIntensity - decay : 0
+
+    flamePixed[currentPixelIndex] = newIntensity
+}   
 
 start()
